@@ -1,5 +1,5 @@
-FROM nvidia/cuda:7.5-cudnn5-devel-ubuntu14.04
-MAINTAINER Yehor Tsebro <egortsb@gmail.com>
+FROM gcr.io/kaggle-images/python-tensorflow-whl:1.12.0-py36	
+MAINTAINER tykjk Tsetyjkkbro <tytktjkt@gmail.com>
 #Update pip
 RUN apt-get update -y && apt-get install apt-utils -y && apt-get upgrade -y && apt-get install git python3 python3-pip python3-cffi unzip wget -y && pip3 install --upgrade pip
 

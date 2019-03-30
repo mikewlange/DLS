@@ -1,13 +1,11 @@
 FROM nvidia/cuda:7.5-cudnn5-devel-ubuntu14.04
 MAINTAINER Yehor Tsebro <egortsb@gmail.com>
 #Update pip
-RUN \
-  apt-get update && \
-  apt-get install -y python python-dev python-pip curl git
-RUN sudo pip install -U pip
+RUN apt-get update -y && apt-get install apt-utils -y && apt-get upgrade -y && apt-get install git python3 python3-pip python3-cffi unzip wget -y && pip3 install --upgrade pip
+
 
 RUN sudo apt-get install -y pkg-config  graphviz libgraphviz-dev  python-tk
-RUN easy_install pygraphviz
+RUN pip3 install pygraphviz
 
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 RUN sudo apt-get install -y nodejs
@@ -25,8 +23,8 @@ WORKDIR /opt/dls
 RUN npm install grunt-cli -g
 #RUN npm install
 
-RUN sudo pip install -r requirements.txt
-RUN pip install toposort
-RUN pip install h5py
+RUN sudo pip3 install -r requirements.txt
+RUN pip3 install toposort
+RUN pip3 install h5py
 #RUN grunt
-CMD python run-app.py
+CMD python3 run-app.py
